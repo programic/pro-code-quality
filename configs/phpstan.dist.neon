@@ -1,0 +1,20 @@
+parameters:
+  level: 8
+  reportUnmatchedIgnoredErrors: false
+  excludes_analyse:
+    - %currentWorkingDirectory%/boostrap/cache/*
+    - %currentWorkingDirectory%/vendor/*
+    - %currentWorkingDirectory%/storage/*
+  ignoreErrors: []
+
+
+rules:
+    - ProQualityControl\Rules\ConstructorIsFirstMethodInClassRule
+
+services
+    -
+        class: ProQualityControl\Rules\ConstructorIsFirstMethodInClassRule
+        arguments:
+            reportMaybes: %reportMaybes%
+        tags:
+            - phpstan.rules.rule
